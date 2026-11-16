@@ -245,7 +245,7 @@ class DCBot():
 
     def format_regs(self, regs: list[sqlite.Registration]):
         return "<time> \" - \" (\" (warez)\" | \"\") <player-name> <player-uuid> \"na email\" <email> \"z discord profilu\" <discord-name> \"(\"<discord-id>\")\"\n" + "\n".join(
-                [f"{format_time(reg.creation_time)} - {"" if reg.is_legit else "(warez) "} {reg.player_name} {reg.player_uuid} na email {self._sqlite_mgr.get_user_by_id(reg.user_id).email} z discord profilu  {reg.discord_name} ({reg.discord_id})"
+                [f"{format_time(reg.creation_time)} - {'' if reg.is_legit else '(warez) '} {reg.player_name} {reg.player_uuid} na email {self._sqlite_mgr.get_user_by_id(reg.user_id).email} z discord profilu  {reg.discord_name} ({reg.discord_id})"
                      for reg in regs]
         )
 
